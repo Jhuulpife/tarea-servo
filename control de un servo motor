@@ -1,0 +1,33 @@
+#include <Servo.h>
+
+// Crear un objeto servo para controlar el servo motor
+Servo myServo;
+
+// Pin al que está conectado el servo
+const int servoPin = 9;
+
+void setup() {
+  // Asignar el pin al servo
+  myServo.attach(servoPin);
+  
+  // Configurar la velocidad del puerto serial para depuración
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Mover el servo de 0 a 180 grados
+  for (int pos = 0; pos <= 180; pos++) {
+    myServo.write(pos);  // Mover el servo a la posición especificada
+    Serial.print("Posición del servo: ");
+    Serial.println(pos);
+    delay(2000);  // Esperar 2 segundos
+  }
+
+  // Mover el servo de 180 a 0 grados
+  for (int pos = 180; pos >= 0; pos--) {
+    myServo.write(pos);  // Mover el servo a la posición especificada
+    Serial.print("Posición del servo: ");
+    Serial.println(pos);
+    delay(2000);  // Esperar 2 segundos
+  }
+}
